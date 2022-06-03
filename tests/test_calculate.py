@@ -7,6 +7,11 @@ def test_open_calc(browser):
     page = GeneralPage(browser, url)
     page.open()
     page.go_to_calc_page()
-    page.calc_exem()
+    page.send_resp()
+    page.calc_exam()
     page.should_be_mem()
+    in_mem = page.should_be_mem()
+    assert in_mem == "1 × 2 - 3 + 1 =", 'Unexpected value'
     page.should_be_resp()
+    in_resp = page.should_be_resp()
+    assert in_resp == "0", 'Unexpected value'
