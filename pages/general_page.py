@@ -17,7 +17,8 @@ class GeneralPage(BasePage):
         numbarea.send_keys("1*2-3+1\n")
 
     def should_be_mem(self):
-        return str(self.browser.find_element(*GeneralPageLocators.mem).text)
+        assert self.browser.find_element(*GeneralPageLocators.mem).text == "1 × 2 - 3 + 1 =", 'Unexpected value'
 
     def should_be_resp(self):
-        return str(self.browser.find_element(*GeneralPageLocators.resp).text)
+        assert self.browser.find_element(*GeneralPageLocators.resp).text == "0", 'Unexpected value'
+
